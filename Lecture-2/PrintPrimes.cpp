@@ -6,22 +6,32 @@ int main(){
 	int n,i,number=2;
 	cin>>n;
 
-	while(number<=n){
-		i=2;
-		while(i<number){
+	// while(number<=n){
+	// 	i=2;
+	// 	while(i<number){
+	// 		if(number%i==0){
+	// 			break;
+	// 		}
+	// 		i++;
+	// 	}
+	// 	if(i==number){
+	// 		cout<<number<<" ";
+	// 	}
+	// 	number++;
+	// }
+	// cout<<endl;
+
+	for(number=2;number<=n;number++){
+		for(i=2;i<number;i++){
 			if(number%i==0){
 				break;
 			}
-			i++;
 		}
 		if(i==number){
 			cout<<number<<" ";
 		}
-		number++;
-	}
+	}	
 	cout<<endl;
-
-
 
 
 
