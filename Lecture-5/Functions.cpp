@@ -18,6 +18,10 @@ void Print(int *arr,int n){
 int main(){
 	int a = 10;
 	int *aptr = &a;
+	int b =11;
+
+	aptr = &b;
+	
 	cout<<sizeof(aptr)<<endl;
 	
 	Update(&a);
