@@ -25,7 +25,7 @@ int main(){
 	}
 	cout<<endl;
 
-	BubbleSort(a,n,0);
+	BubbleSort(a,n,00);
 
 	for(int i=0;i<n;i++){
 		cout<<a[i]<<" ";
