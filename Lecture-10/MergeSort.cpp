@@ -34,7 +34,6 @@ void MergeSort(int *a,int s,int e){
 	if(s>=e){
 		return;
 	}
-
 	// Recursive case
 	// 1. Divide
 	int x[100],y[100];
@@ -43,14 +42,12 @@ void MergeSort(int *a,int s,int e){
 	for(int i=s;i<=mid;i++){
 		x[i] = a[i];
 	}
-
 	for(int i=mid+1;i<=e;i++){
 		y[i] = a[i];
 	}
 	// 2. Sort
 	MergeSort(x,s,mid);
 	MergeSort(y,mid+1,e);
-
 	// 3. Merge
 	Merge(a,x,y,s,e);
 }
