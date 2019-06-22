@@ -10,7 +10,6 @@ bool isSafeToPut(int mat[][9],int i,int j,int n,int number){
 			return false;
 		}
 	}
-
 	n=sqrt(n);
 	int starti = (i/n)*n;
 	int startj = (j/n)*n;
@@ -21,9 +20,7 @@ bool isSafeToPut(int mat[][9],int i,int j,int n,int number){
 			}
 		}
 	}
-
 	return true;
-
 }
 
 
