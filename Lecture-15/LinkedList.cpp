@@ -159,6 +159,20 @@ node* SearchLLRec(node* head,int key){
 	return SearchLLRec(head->next,key);
 }
 
+node* mid(node* head){
+	if(head==NULL){
+		return NULL;
+	}
+	node* slow = head;
+	node* fast = head->next;
+
+	while(fast!=NULL && fast->next!=NULL){
+		fast=fast->next->next;
+		slow = slow->next;
+	}
+	return slow;
+}
+
 int main(){
 	node* head=NULL;
 	node* tail=NULL;
@@ -174,11 +188,11 @@ int main(){
 	Print(head);
 	// DeleteAtFront(head,tail);
 	// DeleteAtFront(head,tail);
-	DeleteAtMid(head,tail,6);
+	// DeleteAtMid(head,tail,6);
 	// Print(head);
 	// DeleteAtEnd(head,tail);
 	Print(head);
-	node* ans = SearchLLRec(head,3);
+	node* ans = mid(head);
 	if(ans!=NULL){
 		cout<<"Found : " <<ans->data<<endl;
 	}
