@@ -134,6 +134,31 @@ void DeleteAtMid(node* &head,node* &tail,int pos){
 
 }
 
+node* SearchLL(node* head,int key){
+
+	while(head){
+		if(head->data == key){
+			return head;
+		}
+		head = head->next;
+	}
+
+	return NULL;
+}
+
+node* SearchLLRec(node* head,int key){
+	// Base case
+	if(head==NULL){
+		return NULL;
+	}
+	// Recursive case
+	if(head->data == key){
+		return head;
+	}
+	// node* chotiListKaAns = SearchLLRec(head->next,key);
+	return SearchLLRec(head->next,key);
+}
+
 int main(){
 	node* head=NULL;
 	node* tail=NULL;
@@ -153,15 +178,20 @@ int main(){
 	// Print(head);
 	// DeleteAtEnd(head,tail);
 	Print(head);
+	node* ans = SearchLLRec(head,3);
+	if(ans!=NULL){
+		cout<<"Found : " <<ans->data<<endl;
+	}
+	else{
+		cout<<"Not Found"<<endl;
+	}
+
+
+
+
+
 
 	cout<<length(head)<<endl;
-
-
-
-
-
-
-
 
 	return 0; 
 }
