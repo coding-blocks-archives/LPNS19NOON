@@ -128,21 +128,92 @@ void BubbleSort(node* &head){
 	}
 }
 
+void ReverseLL(node* &head){
+	node* c=head;
+	node* n;
+	node* p = NULL;
+
+	while(c){
+		n = c->next;
+		c->next = p;
+		p = c;
+		c = n;
+	}
+
+	head = p;
+}
+bool isCyclic(node* head){
+	node* fast = head;
+	node* slow = head;
+
+	while(fast){
+		fast = fast->next;
+		if(fast!=NULL){
+			fast = fast->next;
+			slow = slow->next;
+			if(fast == slow){
+				return true;
+			}
+		}
+	}
+	return false;
+
+}
+
+void BreakCycle(node* head){
+	node* fast = head;
+	node* slow = head;
+	while(fast){
+		fast = fast->next->next;
+		slow=slow->next;
+		if(fast == slow){
+			break;
+		}
+	}
+	node* p = head;
+	while(p->next!=fast){
+		p = p->next;
+	}
+
+	slow = head;
+	while(slow!=fast){
+		p = fast;
+		fast=fast->next;
+		slow = slow->next;
+	}
+	p->next = NULL;
+}
+
+void CreateCycle(node* head){
+	node* temp = head;
+	while(temp->next!=NULL){
+		temp = temp->next;
+	}
+	temp->next = head->next->next;
+}
+
 
 int main(){
 
 	node* head = NULL;
 	node* head1 = NULL;
-	InsertAtFront(head,18);
-	InsertAtFront(head,100);
-	InsertAtFront(head,10);
-	InsertAtFront(head,20);
+	InsertAtFront(head,8);
+	InsertAtFront(head,7);
 	InsertAtFront(head,6);
-	InsertAtFront(head,0);
 	InsertAtFront(head,5);
+	InsertAtFront(head,4);
+	InsertAtFront(head,3);
 	InsertAtFront(head,2);
 	InsertAtFront(head,1);
-
+	CreateCycle(head);
+	if(isCyclic(head)){
+		cout<<"Cyclic"<<endl;
+		BreakCycle(head);
+		// Print(head);
+	}
+	else{
+		cout<<"Not Cyclic"<<endl;
+	}
 	Print(head);
 
 	// InsertAtFront(head1,10);
@@ -154,9 +225,12 @@ int main(){
 	// Print(head1);
 	// head = merge(head,head1);
 	// head = MergeSort(head);
-	BubbleSort(head);
-	Print(head);
-
+	// BubbleSort(head);
+	// Print(head);
+	// ReverseLL(head);
+	// Print(head);
+	// ReverseLL(head);
+	// Print(head);
 
 
 
