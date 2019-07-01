@@ -201,10 +201,6 @@ int main(){
 	}
 
 
-
-
-
-
 	cout<<length(head)<<endl;
 
 	return 0; 
