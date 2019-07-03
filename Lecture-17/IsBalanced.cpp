@@ -49,7 +49,7 @@ bool IsBalanced(char *a){
 }
 
 int main(){
-	char a[] ="{a+(b+c)*d+e*[f+g]}}";
+	char a[] ="{a+(b+c)*d+e*[f+g]}";
 
 	if(IsBalanced(a)){
 		cout<<"Balanced"<<endl;
@@ -57,12 +57,6 @@ int main(){
 	else{
 		cout<<"Not Balanced"<<endl;
 	}
-
-
-
-
-
-
 
 	return 0; 
 }
