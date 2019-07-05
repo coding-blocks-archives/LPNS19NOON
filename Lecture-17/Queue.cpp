@@ -46,9 +46,9 @@ public:
 	int front(){
 		return head->data;
 	}
-
 	bool empty(){
 		return head == NULL;
+
 	}
 };
 
