@@ -99,6 +99,31 @@ public:
 		}
 	}
 
+	T* search(string key){
+		int i = hashFn(key);
+		node<T>* temp = Bucket[i];
+		while(temp){
+			if(temp->key == key){
+				return &(temp->value);
+			}
+		}
+		return NULL;
+	}
+
+	T& operator[](string key){
+		
+		T* temp = search(key);
+		if(temp == NULL){
+			T garbage;
+			insert(key,garbage);
+			temp = search(key);
+			return *temp;
+		}
+		else{
+			return *temp;
+		}
+	}
+
 };
 
 
@@ -110,8 +135,11 @@ int main(){
 	h.insert("Pineapple",20);
 	h.insert("Guava",50);
 	h.insert("Kiwi",70);
-
+	h["Kiwi"]=150;
+	h["Banana"] = 60;
 	h.Print();
+	cout<<h["Banana"]<<endl;
+	cout<<h["Kiwi"]<<endl;
 
 
 
