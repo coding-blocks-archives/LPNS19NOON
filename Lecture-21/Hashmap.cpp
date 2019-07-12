@@ -86,7 +86,10 @@ public:
 
 	}
 
-	// void remove(){}
+	void remove(){
+		// Homework
+	}
+
 	void Print(){
 		for(int i=0;i<ts;i++){
 			cout<<i<<"-->";
@@ -136,13 +139,10 @@ int main(){
 	h.insert("Guava",50);
 	h.insert("Kiwi",70);
 	h["Kiwi"]=150;
-	h["Banana"] = 60;
+	h["Banana"] = 60; // Insertion
 	h.Print();
-	cout<<h["Banana"]<<endl;
-	cout<<h["Kiwi"]<<endl;
-
-
-
+	cout<<h["Banana"]<<endl; // Search
+	cout<<h["Kiwi"]<<endl; // Updation
 
 
 
