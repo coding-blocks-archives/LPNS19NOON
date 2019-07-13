@@ -35,9 +35,7 @@ int BottomUp(int* coins,int n,int amount){
 			int ans = INT_MAX;
 			for(int i=0;i<n;i++){ // iteration on coins
 				if(rupay>=coins[i]){
-					if(dp[rupay-coins[i]]!=INT_MAX){
-						dp[rupay] = min(dp[rupay-coins[i]]+1,dp[rupay]);
-					}
+					dp[rupay] = min(dp[rupay-coins[i]]+1,dp[rupay]);
 				}
 			}
 		}
