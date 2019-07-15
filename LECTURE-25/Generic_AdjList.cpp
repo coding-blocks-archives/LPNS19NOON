@@ -10,6 +10,16 @@ using namespace std;
 template<typename T>
 class Graph{
 	map<T,list<T> > adjList;
+
+	void DFShelper(T src,unordered_map<T,bool> &visited){
+		cout<<src<<" ";
+		visited[src] = true;
+		for(auto children:adjList[src]){
+			if(!visited[children]){
+				DFShelper(children,visited);
+			}
+		}
+	}
 public:
 	void addEdge(T u,T v,bool bidir=true){
 		adjList[u].push_back(v);
@@ -85,43 +95,68 @@ public:
 
 		return dist[des];
 	}
+
+
+
+	void DFS(T src){
+		unordered_map<T,bool> visited;
+		DFShelper(src,visited);
+
+		int component = 1;
+
+		for(auto node:adjList){
+			if(!visited[node.first]){
+				DFShelper(node.first,visited);
+				component++;
+			}
+		}
+		cout<<endl;
+		cout<<"No of components : "<<component;
+		cout<<endl;
+	}
 };
 
 
 
 int main(){
 	Graph<int> g;
-	int board[50] = {0};
-	board[2] = 13;
-	board[5] = 2;
-	board[9] = 18;
-	board[18] = 11;
-	board[17]=-13;
-	board[20] = -14;
-	board[24] = -8;
-	board[25] = -10;
-	board[32] = -2;
-	board[34] = -22;
+	// int board[50] = {0};
+	// board[2] = 13;
+	// board[5] = 2;
+	// board[9] = 18;
+	// board[18] = 11;
+	// board[17]=-13;
+	// board[20] = -14;
+	// board[24] = -8;
+	// board[25] = -10;
+	// board[32] = -2;
+	// board[34] = -22;
 
-	for(int u=0;u<=36;u++){
-		for(int dice = 1;dice<=6;dice++){
-			int v = u+dice+board[u+dice];
-			g.addEdge(u,v,false);
-		}
-	}
+	// for(int u=0;u<=36;u++){
+	// 	for(int dice = 1;dice<=6;dice++){
+	// 		int v = u+dice+board[u+dice];
+	// 		g.addEdge(u,v,false);
+	// 	}
+	// }
 
 
-	// g.addEdge(0,1);
-	// g.addEdge(2,1);
-	// g.addEdge(2,4);
-	// g.addEdge(2,3);
-	// g.addEdge(4,3);
-	// g.addEdge(5,3);
-	// g.addEdge(0,4);
+	g.addEdge(0,1);
+	g.addEdge(2,1);
+	g.addEdge(2,4);
+	g.addEdge(2,3);
+	g.addEdge(4,3);
+	g.addEdge(5,3);
+	g.addEdge(0,4);
+	
+	g.addEdge(10,14);
+	g.addEdge(20,14);
+	g.addEdge(200,140);
+	g.addEdge(120,114);
 
+	g.DFS(0);
 
 	// g.BFS(0);
-	cout<<g.SSSP(0,36)<<endl;
+	// cout<<g.SSSP(0,36)<<endl;
 
 	// g.addEdge("Putin","Trump",false);
 	// g.addEdge("Putin","Modi",false);
